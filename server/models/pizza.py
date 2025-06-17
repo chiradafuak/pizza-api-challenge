@@ -1,9 +1,22 @@
-from server.config import db
+from server.app import db
 
-class Pizza(db.models):
-    __tablename__ = 'pizzas'
-    id = db.column(db.Integer, primary_key=True)
-    name = db.column(db.String, nullable = False)
-    ingredients = db.column(db.string, nullable = False)
+class Pizza(db.Model):
+    __tablename__ = "pizzas"
 
-    restaurant_pizzas = db.relationship('RestaurantPizza', back_populates = 'Pizza')
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String, nullable=False)
+    ingredients = db.Column(db.String, nullable=False)
+
+    
+    restaurant_pizzas = db.relationship(
+        "RestaurantPizza",
+        back_populates="pizza",
+        cascade="all, delete-orphan"
+    )
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "ingredients": self.ingredients
+        }
