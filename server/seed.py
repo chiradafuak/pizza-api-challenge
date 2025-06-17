@@ -18,8 +18,8 @@ with app.app_context():
     db.session.add_all([pepperoni, hawaiian])
 
     
-    elaines = Restaurant(name="Elaine's Pizza", address="12 Westlands, Nairobi")
-    mama_roma = Restaurant(name="Mama Roma", address="45 Kenyatta Avenue, Nairobi")
+    elaines = Restaurant(name="Trish's Pizza", address="15 Langata, Nairobi")
+    mama_roma = Restaurant(name="Mama Chira", address="45 Moi Avenue, Nairobi")
     db.session.add_all([elaines, mama_roma])
 
     db.session.commit()
